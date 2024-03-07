@@ -1,10 +1,6 @@
 import React from 'react';
 import {Image, TouchableOpacity, View, Text} from 'react-native';
 
-// import image
-
-import NextImage from '../../assets/nextArrow.png';
-
 function NextButton(props) {
   const {destination} = props;
   const {navigation} = props;
@@ -32,13 +28,11 @@ function NextButton(props) {
             color: 'black',
             fontWeight: 'bold',
             fontSize: 18,
+            paddingLeft: 15,
+            paddingRight: 15,
           }}>
           {text}
         </Text>
-        <Image
-          style={{objectFit: 'contain', width: 20, height: 30}}
-          source={NextImage}
-        />
       </TouchableOpacity>
     </View>
   );

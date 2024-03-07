@@ -4,10 +4,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // importing components
-import OnBoarding from '../pages/OnBoarding/OnBoarding';
+import Features from '../pages/Features/Features';
 import StartScreen from '../pages/StartScreen/StartScreen';
 import MobileNumber from '../pages/LoginScreen/LoginScreen';
 import Otp from '../components/common/login/Otp';
+import OnBoarding from '../pages/OnBoarding/OnBoarding';
 
 function NavigationWrapper(props) {
   const {navigationRef} = props;
@@ -20,9 +21,10 @@ function NavigationWrapper(props) {
         initialRouteName="StartScreen"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="StartScreen" component={StartScreen} />
-        <Stack.Screen name="OnBoarding" component={OnBoarding} />
+        <Stack.Screen name="Features" component={Features} />
         <Stack.Screen name="MobileNumber" component={MobileNumber} />
         <Stack.Screen name="OtpScreen" component={Otp} />
+        <Stack.Screen name="OnBoarding" component={OnBoarding} />
       </Stack.Navigator>
     </NavigationContainer>
   );

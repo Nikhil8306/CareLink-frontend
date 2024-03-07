@@ -1,76 +1,91 @@
 import React from 'react';
 import {
-  ScrollView,
-  Text,
-  Image,
-  TextInput,
   View,
-  Dimensions,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
+  ScrollView,
+  StyleSheet,
 } from 'react-native';
 
 // importing common function
 import NextButton from '../../common/NextButton';
 
 // importing images
-import Logo from '../../../assets/logo.png';
+import MobileNumberImage from '../../../assets/mobileNumber.png';
 
-function MobileNumber(props) {
-  const {navigation} = props;
-  const screenHeight = Dimensions.get('screen').height;
+function MobileNumber({navigation}) {
+  const handleNextPress = () => {
+    // Handle navigation to the next screen
+  };
+
   return (
-    <ScrollView>
-      <View
-        style={{
-          backgroundColor: 'white',
-          alignItems: 'center',
-          height: screenHeight,
-          width: '100%',
-          justifyContent: 'center',
-        }}>
-        <Image
-          style={{
-            objectFit: 'contain',
-            width: '50%',
-            height: '40%',
-          }}
-          source={Logo}
-        />
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 20,
-          }}>
-          Enter your phone number
-        </Text>
-        <TextInput
-          style={{
-            backgroundColor: '#ACF2E0',
-            borderRadius: 15,
-            width: '70%',
-            color: 'black',
-            fontSize: 18,
-            marginTop: 20,
-            marginBottom: 20,
-          }}
-          placeholder="Mobile number here"
-          placeholderTextColor={'black'}
-          keyboardType="numeric"
-        />
-
-        <Text style={{fontSize: 11}}>
-          We will send an OTP for verificationto your number
-        </Text>
-
-        <View style={{position: 'absolute', bottom: 50}}>
-          <NextButton
-            navigation={navigation}
-            destination={'OtpScreen'}
-            text={'Confirm'}
+    <ScrollView style={{height: '100%'}} contentContainerStyle={{flexGrow: 1}}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Image style={styles.image} source={MobileNumberImage} />
+          <Text style={styles.title}>Enter your phone number</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Mobile number here"
+            placeholderTextColor="black"
+            keyboardType="numeric"
           />
+          <Text style={styles.info}>
+            We will send an OTP for verification to your number
+          </Text>
+          <TouchableOpacity style={styles.button} onPress={handleNextPress}>
+            <NextButton
+              text="Confirm"
+              navigation={navigation}
+              destination={'OtpScreen'}
+            />
+          </TouchableOpacity>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: 'white',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 20,
+    color: 'black',
+    marginBottom: 10,
+  },
+  input: {
+    backgroundColor: '#ACF2E0',
+    borderRadius: 17,
+    width: '70%',
+    color: 'black',
+    fontSize: 18,
+    marginBottom: 20,
+    paddingLeft: 18,
+  },
+  info: {
+    fontSize: 11,
+    marginBottom: 20,
+    color: 'black',
+  },
+  button: {
+    position: 'absolute',
+    bottom: 0,
+  },
+});
 
 export default MobileNumber;

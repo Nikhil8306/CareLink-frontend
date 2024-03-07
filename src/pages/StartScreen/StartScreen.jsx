@@ -9,7 +9,7 @@ function StartScreen({navigation}) {
   useEffect(() => {
     console.log('First screen loaded');
     const timer = setTimeout(() => {
-      navigation.replace('OnBoarding');
+      navigation.replace('Features');
     }, 2000);
     return () => clearTimeout(timer);
   }, [navigation]);

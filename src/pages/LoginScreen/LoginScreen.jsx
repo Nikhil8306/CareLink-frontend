@@ -13,13 +13,17 @@ function LoginScreen({navigation}) {
   };
 
   const verifyOtp = () => {
-    navigation.replace('Home');
+    navigation.replace('OnBoarding');
   };
 
   return (
     <View>
       {isOtpSent ? (
-        <Otp navigation={navigation} resendOtp={resendOtp} />
+        <Otp
+          navigation={navigation}
+          verifyOtp={verifyOtp}
+          resendOtp={resendOtp}
+        />
       ) : (
         <MobileNumber navigation={navigation} />
       )}
