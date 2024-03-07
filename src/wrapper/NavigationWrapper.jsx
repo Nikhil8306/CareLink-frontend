@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import OnBoarding from '../pages/OnBoarding/OnBoarding';
 import StartScreen from '../pages/StartScreen/StartScreen';
 import MobileNumber from '../pages/LoginScreen/LoginScreen';
+import Otp from '../components/common/login/Otp';
 
 function NavigationWrapper(props) {
   const {navigationRef} = props;
@@ -21,6 +22,7 @@ function NavigationWrapper(props) {
         <Stack.Screen name="StartScreen" component={StartScreen} />
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="MobileNumber" component={MobileNumber} />
+        <Stack.Screen name="OtpScreen" component={Otp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
