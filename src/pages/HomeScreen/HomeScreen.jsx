@@ -1,11 +1,14 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
+
+// importing HomeScreen Ui
+import HomeScreenUI from '../../components/common/home/HomeScreenUI';
 
 function HomeScreen() {
   return (
-    <View>
-      <Text>Heelo</Text>
-    </View>
+    <ScrollView contentContainerStyle={{flex: 1}}>
+      <HomeScreenUI />
+    </ScrollView>
   );
 }
 
