@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -18,6 +18,7 @@ import NextButton from '../../common/NextButton';
 import MobileNumberImage from '../../../assets/mobileNumber.png';
 
 function MobileNumber({navigation}) {
+  const [mobileNumber, setMobileNumber] = useState();
   const handleNextPress = () => {
     // Handle navigation to the next screen
   };
@@ -33,6 +34,10 @@ function MobileNumber({navigation}) {
             placeholder="Mobile number here"
             placeholderTextColor="black"
             keyboardType="numeric"
+            onChangeText={text => {
+              // console.log(mobileNumber);
+              setMobileNumber(text);
+            }}
           />
           <Text style={styles.info}>
             We will send an OTP for verification to your number
@@ -42,6 +47,7 @@ function MobileNumber({navigation}) {
               text="Confirm"
               navigation={navigation}
               destination={'OtpScreen'}
+              mobileNumber={mobileNumber}
             />
           </TouchableOpacity>
         </View>

@@ -16,6 +16,10 @@ function LoginScreen({navigation}) {
     navigation.replace('OnBoarding');
   };
 
+  const sendOtp = () => {
+    console.log('OTP sent');
+  };
+
   return (
     <View>
       {isOtpSent ? (

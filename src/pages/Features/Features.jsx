@@ -59,8 +59,16 @@ function Features({navigation}) {
           }}
           source={item.image}
         />
-        <Text style={{fontSize: 14, fontWeight: 'bold'}}>{item.title}</Text>
-        <Text style={{fontSize: 13, fontWeight: 'bold', textAlign: 'center'}}>
+        <Text style={{fontSize: 14, fontWeight: 'bold', color: 'black'}}>
+          {item.title}
+        </Text>
+        <Text
+          style={{
+            fontSize: 13,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            color: 'black',
+          }}>
           {item.text}
         </Text>
       </View>

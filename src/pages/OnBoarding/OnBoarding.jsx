@@ -1,12 +1,33 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, ScrollView, KeyboardAvoidingView, StyleSheet} from 'react-native';
 
-function OnBoarding() {
+// importing Ui components
+import OnBoardingUI from '../../components/common/OnBoarding/OnBoardingUI';
+
+function OnBoarding({navigation}) {
   return (
-    <View>
-      <Text>This is onboarding</Text>
-    </View>
+    <KeyboardAvoidingView style={styles.container} behavior="20">
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.content}>
+          <OnBoardingUI navigation={navigation} />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default OnBoarding;

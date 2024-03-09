@@ -82,6 +82,7 @@ function Otp(props) {
                 <View key={index} style={{width: '20%', marginTop: 10}}>
                   <TextInput
                     placeholder="X"
+                    placeholderTextColor={'black'}
                     ref={ref}
                     style={{
                       borderWidth: 1,
