@@ -15,6 +15,9 @@ import locationImage from '../../../assets/locationImage.jpg';
 import notificationImage from '../../../assets/notification.jpg';
 import profileImage from '../../../assets/profile.jpg';
 
+// importing components
+import BottomNavigator from '../login/BottomNavigator/BottomNavigator';
+
 function HomeScreenUI(props) {
   const [searchContent, setSearchContent] = useState('');
   const [keyboardVisible, setKeyboardVisible] = useState(false);
@@ -26,18 +29,6 @@ function HomeScreenUI(props) {
     {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
     {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
     {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomuu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
   ]);
 
   const [popularDoctors, setPopularDoctors] = useState([
@@ -48,90 +39,7 @@ function HomeScreenUI(props) {
       rating: '4.6',
       reviews: '762',
     },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
+
     {
       name: 'Dr poonia',
       specialty: 'Cardio',
@@ -204,27 +112,6 @@ function HomeScreenUI(props) {
     },
     {
       name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr Trivedi',
       specialty: 'Cardio',
       location: 'London',
       rating: '4.6',
@@ -233,24 +120,6 @@ function HomeScreenUI(props) {
   ]);
 
   const [categories, setCategories] = useState([
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
     {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
@@ -323,14 +192,6 @@ function HomeScreenUI(props) {
               </TouchableOpacity>
             </View>
           </View>
-
-          {/* <View style={{flex: 0.07, alignItems: 'center'}}>
-            <TextInput
-              placeholder="Search button here"
-              value={searchContent}
-              onChangeText={setSearchContent}
-            />
-          </View> */}
 
           <View
             style={{
@@ -535,6 +396,7 @@ function HomeScreenUI(props) {
           </View>
           <View
             style={{
+              marginBottom: 40,
               backgroundColor: '#EDFAF6',
               flex: 0.25,
               paddingVertical: 10,
@@ -576,6 +438,22 @@ function HomeScreenUI(props) {
           </View>
         </View>
       </ScrollView>
+
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          height: '6.2%',
+          width: '100%',
+          backgroundColor: '#ACEFE1',
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <BottomNavigator />
+      </View>
+
       {/* Empty view to push content up when keyboard appears */}
       {keyboardVisible && <View style={{flex: 1}} />}
     </KeyboardAvoidingView>
