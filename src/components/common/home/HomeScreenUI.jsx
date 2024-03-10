@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -6,271 +6,579 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  Dimensions,
 } from 'react-native';
-
-// importing assests
 import locationImage from '../../../assets/locationImage.jpg';
 import notificationImage from '../../../assets/notification.jpg';
 import profileImage from '../../../assets/profile.jpg';
-// import HeartImage from '../../../assets/heartImage.jpg';
-
-// importing essential libraries
 
 function HomeScreenUI(props) {
-  const [searchContent, setSearchContent] = useState();
+  const [searchContent, setSearchContent] = useState('');
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+
   const [consultants, setConsultants] = useState([
     {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
     {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
     {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+    {name: 'Chomuu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
+  ]);
+
+  const [popularDoctors, setPopularDoctors] = useState([
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr poonia',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr soni',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
+    {
+      name: 'Dr Trivedi',
+      specialty: 'Cardio',
+      location: 'London',
+      rating: '4.6',
+      reviews: '762',
+    },
   ]);
 
   const [categories, setCategories] = useState([
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
+    {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
+    {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
+    {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
   ]);
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      },
+    );
+
+    // Clean up listeners
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
   return (
-    <View style={{backgroundColor: '#EDFAF6', flex: 1}}>
-      {/* This is top container */}
-      <View
-        style={{
-          flex: 0.08,
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          backgroundColor: 'pink',
-          minHeight: 13,
-        }}>
-        <View
-          style={{
-            height: '100%',
-            flexDirection: 'row',
-            width: '30%',
-            alignItems: 'center',
-          }}>
-          <Image
-            style={{objectFit: 'contain', height: '70%', width: '20%'}}
-            source={locationImage}
-          />
-          <Text>New york, USA</Text>
-        </View>
-        {/* This is notification container */}
-        <View
-          style={{
-            width: '15%',
-            height: '100%',
-            alignItems: 'center',
-          }}>
-          <TouchableOpacity
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{flexGrow: 1}}>
+        <View style={{backgroundColor: '#EDFAF6', flex: 1}}>
+          <View
             style={{
-              height: '100%',
-              width: '100%',
+              flex: 0.5,
               alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              minHeight: 35,
             }}>
-            <Image
-              source={notificationImage}
-              style={{height: '60%', width: '70%', objectFit: 'contain'}}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      <View
-        style={{
-          backgroundColor: 'red',
-          flex: 0.07,
-          alignItems: 'center',
-        }}>
-        {/* <Text>Yahan pe search bar aaega</Text> */}
-        <TextInput placeholder="Search button here" />
-      </View>
-
-      <View style={{backgroundColor: '#EDFAF6', flex: 0.25}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Consultants</Text>
-        <ScrollView
-          style={{marginTop: 15}}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          {consultants.map((element, index) => (
-            <TouchableOpacity
-              key={index}
+            <View
               style={{
-                backgroundColor: '#97F3DD',
-                height: '80%',
-                // minWidth: 350,
-                flex: 1,
-                minWidth: 320,
-                marginLeft: 10,
-                marginRight: 10,
-
+                height: '100%',
                 flexDirection: 'row',
-                alignItems: 'center',
-                borderRadius: 24,
-              }}>
-              <View
-                style={{
-                  height: '85%',
-                  width: '35%',
-                  backgroundColor: 'red',
-                  borderRadius: 45,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginRight: 20,
-                }}>
-                <Image
-                  style={{
-                    // objectFit: 'contain',
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: 45,
-                  }}
-                  source={profileImage}
-                />
-              </View>
-
-              <View
-                style={{
-                  height: '70%',
-                  width: '55%',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-                  {element.name}
-                </Text>
-                <Text>{element.type}</Text>
-
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    height: '40%',
-
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text>{element.date}</Text>
-                  <Text>{element.time}</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
-      <View style={{flex: 0.25}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Categories</Text>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          horizontal={true}
-          contentContainerStyle={{
-            // backgroundColor: 'blue',
-            alignItems: 'center',
-            // flex: 1,
-          }}>
-          {categories.map(element => (
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'white',
-                // maxWidth: 200,
-                minWidth: 100,
-                borderRadius: 22,
-                marginLeft: 15,
-                marginRight: 15,
-
-                // maxHeight: 50,
-                height: '60%',
                 alignItems: 'center',
               }}>
               <Image
-                style={{
-                  width: '60%',
-                  height: '60%',
-                  objectFit: 'contain',
-                }}
-                source={profileImage}
+                style={{objectFit: 'contain', height: '70%', width: '20%'}}
+                source={locationImage}
               />
-
-              <Text style={{color: '#7689A3', fontSize: 18}}>Ortho</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
-
-      <View style={{flex: 0.25}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Popular Doctors</Text>
-
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{alignItems: 'center'}}>
-          {consultants.map(element => (
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'white',
-                height: '80%',
-                minWidth: 220,
-                maxWidth: 280,
-                borderRadius: 20,
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginLeft: 15,
-                marginRight: 15,
-              }}>
-              <View
+              <Text style={{color: 'black'}}>New york, USA</Text>
+            </View>
+            <View style={{width: '15%', height: '100%', alignItems: 'center'}}>
+              <TouchableOpacity
                 style={{
-                  width: '30%',
-                  height: '90%',
-                  justifyContent: 'center',
+                  height: '100%',
+                  width: '100%',
                   alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
                 <Image
-                  style={{
-                    objectFit: 'contain',
-                    width: '90%',
-                    height: '90%',
-                  }}
-                  source={profileImage}
+                  source={notificationImage}
+                  style={{height: '60%', width: '70%', objectFit: 'contain'}}
                 />
-              </View>
+              </TouchableOpacity>
+            </View>
+          </View>
 
-              <View
-                style={{
-                  width: '65%',
-                  height: '80%',
-                  justifyContent: 'space-between',
-                }}>
-                <Text>Lana Rhodes</Text>
-                <View
+          {/* <View style={{flex: 0.07, alignItems: 'center'}}>
+            <TextInput
+              placeholder="Search button here"
+              value={searchContent}
+              onChangeText={setSearchContent}
+            />
+          </View> */}
+
+          <View
+            style={{
+              backgroundColor: '#EDFAF6',
+              flex: 0.25,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginLeft: 10,
+                color: 'black',
+              }}>
+              Consultants
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{paddingHorizontal: 10}}>
+              {consultants.map((consultant, index) => (
+                <TouchableOpacity
+                  key={index}
                   style={{
+                    marginRight: 10,
+                    minWidth: 270,
                     flexDirection: 'row',
-                    width: '100%',
-                    justifyContent: 'space-between',
+                    minHeight: 120,
+                    alignItems: 'center',
                   }}>
-                  <Text>Cardio</Text>
-                  <Text>London</Text>
-                </View>
+                  <View
+                    style={{
+                      backgroundColor: '#97F3DD',
+                      flex: 1,
+                      padding: 10,
+                      borderRadius: 20,
+                      height: '100%',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      style={{width: 70, height: 70, borderRadius: 28}}
+                      source={profileImage}
+                    />
 
-                <Text>4.6*(762 reviews)</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
+                    <View
+                      style={{
+                        width: '70%',
+                        justifyContent: 'space-around',
+                      }}>
+                      <Text style={{fontSize: 20, color: 'black'}}>
+                        {consultant.name}
+                      </Text>
+                      <Text style={{color: 'black', fontSize: 17}}>
+                        {consultant.type}
+                      </Text>
 
-      <View style={{flex: 0.25}}></View>
-    </View>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}>
+                        <Text style={{color: 'black'}}>{consultant.date}</Text>
+                        <Text style={{color: 'black'}}>{consultant.time}</Text>
+                      </View>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+
+          <View
+            style={{
+              backgroundColor: '#EDFAF6',
+              flex: 0.25,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginLeft: 10,
+                color: 'black',
+              }}>
+              Categories
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{paddingHorizontal: 10}}>
+              {categories.map((category, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={{
+                    marginRight: 10,
+                    minWidth: 70,
+                  }}>
+                  <View
+                    style={{
+                      backgroundColor: '#FFF',
+                      padding: 10,
+                      borderRadius: 20,
+                      alignItems: 'center',
+                    }}>
+                    <Image
+                      style={{width: 50, height: 50, borderRadius: 25}}
+                      source={profileImage}
+                    />
+                    <Text style={{color: 'black', fontSize: 17}}>
+                      {category.name}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+
+          <View
+            style={{
+              backgroundColor: '#EDFAF6',
+              flex: 0.25,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginLeft: 10,
+                color: 'black',
+              }}>
+              Popular Doctors
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingHorizontal: 10,
+
+                // height: '100%',
+              }}>
+              {popularDoctors.map((doctor, index) => (
+                <TouchableOpacity key={index} style={{marginRight: 10}}>
+                  <View
+                    style={{
+                      backgroundColor: '#FFF',
+                      padding: 10,
+                      minWidth: 270,
+                      borderRadius: 20,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      minHeight: 130,
+                    }}>
+                    <View
+                      style={{
+                        backgroundColor: 'blue',
+                        // height: '100%',
+                        flex: 0.8,
+                        borderRadius: 55,
+                      }}>
+                      <Image
+                        style={{
+                          // width: 60,
+                          // height: 70,
+                          backgroundColor: 'red',
+                          height: '100%',
+                          width: '100%',
+                          objectFit: 'cover',
+                          borderRadius: 55,
+                        }}
+                        source={profileImage}
+                      />
+                    </View>
+
+                    <View
+                      style={{
+                        flex: 0.5,
+                        // backgroundColor: 'pink',
+                        paddingLeft: 10,
+                      }}>
+                      <Text style={{fontSize: 18, color: 'black'}}>
+                        {doctor.name}
+                      </Text>
+                      <Text style={{fontSize: 16, color: 'black'}}>
+                        {doctor.specialty}
+                      </Text>
+
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                        }}>
+                        <Text style={{color: 'black'}}>{doctor.location}</Text>
+                        <Text style={{color: 'black'}}>{doctor.rating}</Text>
+                      </View>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+          <View
+            style={{
+              backgroundColor: '#EDFAF6',
+              flex: 0.25,
+              paddingVertical: 10,
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginLeft: 10,
+                color: 'black',
+              }}>
+              Popular Hospitals
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{paddingHorizontal: 10}}>
+              {popularDoctors.map((doctor, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={{
+                    marginRight: 10,
+                    minWidth: 270,
+                    minHeight: 140,
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                  }}>
+                  <Image
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      resizeMode: 'cover',
+                    }}
+                    source={profileImage}
+                  />
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        </View>
+      </ScrollView>
+      {/* Empty view to push content up when keyboard appears */}
+      {keyboardVisible && <View style={{flex: 1}} />}
+    </KeyboardAvoidingView>
   );
 }
 
