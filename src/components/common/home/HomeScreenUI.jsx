@@ -19,6 +19,8 @@ import profileImage from '../../../assets/profile.jpg';
 import BottomNavigator from '../login/BottomNavigator/BottomNavigator';
 
 function HomeScreenUI(props) {
+  const {navigation} = props;
+
   const {handleSearch, handleAppointment, handleSettings, handleHome} = props;
 
   const [searchContent, setSearchContent] = useState('');
@@ -453,12 +455,7 @@ function HomeScreenUI(props) {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <BottomNavigator
-          handleAppointment={handleAppointment}
-          handleSettings={handleSettings}
-          handleHome={handleHome}
-          handleSearch={handleSearch}
-        />
+        <BottomNavigator navigation={navigation} />
       </View>
 
       {/* Empty view to push content up when keyboard appears */}

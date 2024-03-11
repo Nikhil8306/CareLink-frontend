@@ -9,7 +9,24 @@ import searchImage from '../../../../assets/search.jpg';
 import appointmentImage from '../../../../assets/appointment.jpg';
 
 function BottomNavigator(props) {
-  const {handleSearch, handleHome, handleSettings, handleAppointment} = props;
+  // const {handleSearch, handleHome, handleSettings, handleAppointment} = props;
+
+  const {navigation} = props;
+
+  const handleSearch = () => {
+    navigation.navigate('Search');
+  };
+  const handleHome = () => {
+    navigation.navigate('HomeScreen');
+  };
+  const handleSettings = () => {
+    console.log('Handle Search presed');
+  };
+  const handleAppointment = () => {
+    console.log('Handle Search presed');
+    navigation.navigate('Appointment');
+  };
+
   return (
     <View
       style={{
