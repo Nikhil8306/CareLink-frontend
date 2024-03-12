@@ -73,10 +73,20 @@ function SearchUI(props) {
     <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
       <View style={styles.container}>
         <View style={styles.tabContainer}>
-          <TouchableOpacity onPress={handleShowDoctors} style={styles.tab}>
+          <TouchableOpacity
+            onPress={handleShowDoctors}
+            style={[
+              styles.tab,
+              {backgroundColor: doctorsVisible ? '#8AF2D9' : 'white'},
+            ]}>
             <Text style={styles.tabText}>Doctors</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={handleShowHospitals} style={styles.tab}>
+          <TouchableOpacity
+            onPress={handleShowHospitals}
+            style={[
+              styles.tab,
+              {backgroundColor: doctorsVisible ? 'white' : '#8AF2D9'},
+            ]}>
             <Text style={styles.tabText}>Hospitals</Text>
           </TouchableOpacity>
         </View>
@@ -87,7 +97,9 @@ function SearchUI(props) {
           <Text style={{color: 'black'}}>169 results</Text>
         </View>
 
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={{paddingBottom: 45}}
+          showsVerticalScrollIndicator={false}>
           {doctorsVisible
             ? doctors.map((element, index) => (
                 <TouchableOpacity
@@ -102,6 +114,7 @@ function SearchUI(props) {
                     alignSelf: 'center',
                     marginTop: 15,
                     justifyContent: 'space-between',
+                    // paddingBottom: 65,
                   }}>
                   <View
                     style={{
@@ -233,7 +246,7 @@ function SearchUI(props) {
         style={{
           position: 'absolute',
           bottom: 0,
-          height: '6.2%',
+          height: '6.0%',
           width: '100%',
           backgroundColor: '#ACEFE1',
           borderTopLeftRadius: 30,

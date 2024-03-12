@@ -56,23 +56,6 @@ function Dropdown(props) {
               Female🗿
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              handleGender('Chakka');
-            }}
-            style={{
-              width: 270,
-              height: 50,
-              // height: '40%',
-
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 10,
-            }}>
-            <Text style={{fontSize: 18, color: 'black', fontWeight: '900'}}>
-              Chakka🗿
-            </Text>
-          </TouchableOpacity>
         </BottomSheetView>
       </BottomSheet>
     </View>
