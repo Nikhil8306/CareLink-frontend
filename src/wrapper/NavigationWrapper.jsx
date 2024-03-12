@@ -14,6 +14,7 @@ import Search from '../pages/Search/Search';
 import Appointments from '../pages/Appointments/Appointments';
 import Settings from '../pages/Settings/Settings';
 import DoctorDetail from '../pages/DoctorDetail/DoctorDetail';
+import BookScreen from '../pages/BookScreen/BookScreen';
 
 function NavigationWrapper(props) {
   const {navigationRef} = props;
@@ -35,6 +36,8 @@ function NavigationWrapper(props) {
         <Stack.Screen name="Appointments" component={Appointments} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="DoctorDetail" component={DoctorDetail} />
+
+        <Stack.Screen name="BookingScreen" component={BookScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

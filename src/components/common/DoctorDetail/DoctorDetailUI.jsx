@@ -12,7 +12,7 @@ import patients from '../../../assets/patients.jpg';
 import reviewIcon from '../../../assets/review.jpg';
 
 function DoctorDetail(props) {
-  const {navigation} = props;
+  const {navigation, handleBookAppointment} = props;
   return (
     <View style={{flex: 1, backgroundColor: '#97F3DD'}}>
       <View
@@ -94,7 +94,6 @@ function DoctorDetail(props) {
           height: '48%',
           position: 'absolute',
           width: '100%',
-          zIndex: 1,
           bottom: 0,
           borderTopRightRadius: 35,
           borderTopLeftRadius: 35,
@@ -142,6 +141,33 @@ function DoctorDetail(props) {
             repudiandae earum enim ad dolor facilis maxime mollitia iusto
             voluptas, consequuntur dicta exercitationem perferendis!
           </Text>
+        </View>
+
+        <View
+          style={{
+            // backgroundColor: 'red',
+            width: '98%',
+            borderRadius: 10,
+            minHeight: 60,
+            display: 'flex',
+            flexDirection: 'row-reverse',
+          }}>
+          <TouchableOpacity
+            onPress={handleBookAppointment}
+            style={{
+              maxWidth: 150,
+              flex: 1,
+              backgroundColor: '#8BF2D9',
+              position: 'relative',
+              right: 0,
+              borderRadius: 12,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text style={{color: 'black', fontSize: 17, fontWeight: 800}}>
+              Book Appointment
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
