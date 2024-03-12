@@ -12,6 +12,7 @@ import OnBoarding from '../pages/OnBoarding/OnBoarding';
 import HomeScreen from '../pages/HomeScreen/HomeScreen';
 import Search from '../pages/Search/Search';
 import Appointments from '../pages/Appointments/Appointments';
+import Settings from '../pages/Settings/Settings';
 
 function NavigationWrapper(props) {
   const {navigationRef} = props;
@@ -31,6 +32,8 @@ function NavigationWrapper(props) {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="Search" component={Search} />
         <Stack.Screen name="Appointments" component={Appointments} />
+
+        <Stack.Screen name="Settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );

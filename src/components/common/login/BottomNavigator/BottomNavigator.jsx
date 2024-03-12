@@ -19,6 +19,7 @@ function BottomNavigator(props) {
   };
   const handleSettings = () => {
     console.log('Handle Search presed');
+    navigation.navigate('Settings');
   };
   const handleAppointment = () => {
     console.log('Handle Search presed');
