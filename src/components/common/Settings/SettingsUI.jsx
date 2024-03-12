@@ -14,8 +14,8 @@ function SettingsUI(props) {
       <View
         style={{
           backgroundColor: '#C5F8EC',
-          width: '15%',
-          height: '8%',
+          width: 80,
+          height: 80,
           borderRadius: 50,
           marginLeft: 5,
           justifyContent: 'center',
@@ -39,7 +39,7 @@ function SettingsUI(props) {
             justifyContent: 'space-around',
           }}>
           <Image style={{width: 50, height: 50}} source={profileIcon} />
-          <Text>My profile</Text>
+          <Text style={{color: 'black', fontSize: 18}}>My profile</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -50,7 +50,7 @@ function SettingsUI(props) {
             justifyContent: 'space-around',
           }}>
           <Image style={{width: 50, height: 50}} source={settingsIcon} />
-          <Text>Settings</Text>
+          <Text style={{color: 'black', fontSize: 18}}>Settings</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -61,7 +61,7 @@ function SettingsUI(props) {
             justifyContent: 'space-around',
           }}>
           <Image style={{width: 50, height: 50}} source={logoutIcon} />
-          <Text>Logout</Text>
+          <Text style={{color: 'black', fontSize: 18}}>Logout</Text>
         </TouchableOpacity>
       </View>
     </View>

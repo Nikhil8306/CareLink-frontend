@@ -217,7 +217,7 @@ function HomeScreenUI(props) {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{paddingHorizontal: 10}}>
               {consultants.map((consultant, index) => (
-                <TouchableOpacity
+                <View
                   key={index}
                   style={{
                     marginRight: 10,
@@ -238,7 +238,7 @@ function HomeScreenUI(props) {
                       alignItems: 'center',
                     }}>
                     <Image
-                      style={{width: 70, height: 70, borderRadius: 28}}
+                      style={{width: 70, height: 70, borderRadius: 35}}
                       source={profileImage}
                     />
 
@@ -264,7 +264,7 @@ function HomeScreenUI(props) {
                       </View>
                     </View>
                   </View>
-                </TouchableOpacity>
+                </View>
               ))}
             </ScrollView>
           </View>
@@ -352,7 +352,6 @@ function HomeScreenUI(props) {
                     }}>
                     <View
                       style={{
-                        backgroundColor: 'blue',
                         // height: '100%',
                         flex: 0.8,
                         borderRadius: 55,
@@ -362,8 +361,10 @@ function HomeScreenUI(props) {
                           // width: 60,
                           // height: 70,
                           backgroundColor: 'red',
-                          height: '100%',
-                          width: '100%',
+                          // height: '100%',
+                          // width: '100%',
+                          height: 100,
+                          width: 100,
                           objectFit: 'cover',
                           borderRadius: 55,
                         }}
