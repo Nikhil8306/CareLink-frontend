@@ -19,7 +19,7 @@ import profileImage from '../../../assets/profile.jpg';
 import BottomNavigator from '../login/BottomNavigator/BottomNavigator';
 
 function HomeScreenUI(props) {
-  const {navigation} = props;
+  const {navigation, handleDoctor} = props;
 
   const {handleSearch, handleAppointment, handleSettings, handleHome} = props;
 
@@ -339,7 +339,10 @@ function HomeScreenUI(props) {
                 // height: '100%',
               }}>
               {popularDoctors.map((doctor, index) => (
-                <TouchableOpacity key={index} style={{marginRight: 10}}>
+                <TouchableOpacity
+                  onPress={handleDoctor}
+                  key={index}
+                  style={{marginRight: 10}}>
                   <View
                     style={{
                       backgroundColor: '#FFF',

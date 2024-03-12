@@ -7,11 +7,12 @@ function HomeScreen(props) {
 
   const handleDoctor = () => {
     console.log('Doctor pressed');
+    navigation.navigate('DoctorDetail');
   };
 
   return (
     <View style={{flex: 1}}>
-      <HomeScreenUI navigation={navigation} />
+      <HomeScreenUI handleDoctor={handleDoctor} navigation={navigation} />
     </View>
   );
 }
