@@ -15,6 +15,8 @@ import Appointments from '../pages/Appointments/Appointments';
 import Settings from '../pages/Settings/Settings';
 import DoctorDetail from '../pages/DoctorDetail/DoctorDetail';
 import BookScreen from '../pages/BookScreen/BookScreen';
+import Categories from '../pages/Categories/Categories';
+import HospitalDetail from '../pages/HospitalDetail/HospitalDetail';
 
 function NavigationWrapper(props) {
   const {navigationRef} = props;
@@ -38,6 +40,10 @@ function NavigationWrapper(props) {
         <Stack.Screen name="DoctorDetail" component={DoctorDetail} />
 
         <Stack.Screen name="BookingScreen" component={BookScreen} />
+
+        <Stack.Screen name="CategoryScreen" component={Categories} />
+
+        <Stack.Screen name="HospitalDetail" component={HospitalDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

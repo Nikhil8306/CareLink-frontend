@@ -77,7 +77,13 @@ function BookingScreenUI(props) {
           bottom: 10,
           right: 10,
         }}>
-        <Text style={{color: 'black', fontSize: 17, padding: 5}}>
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 17,
+            padding: 5,
+            fontWeight: 'bold',
+          }}>
           Procced to Pay
         </Text>
       </TouchableOpacity>

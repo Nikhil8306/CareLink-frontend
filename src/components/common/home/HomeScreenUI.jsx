@@ -19,9 +19,15 @@ import profileImage from '../../../assets/profile.jpg';
 import BottomNavigator from '../login/BottomNavigator/BottomNavigator';
 
 function HomeScreenUI(props) {
-  const {navigation, handleDoctor} = props;
+  const {navigation, handleDoctor, handleCategory} = props;
 
-  const {handleSearch, handleAppointment, handleSettings, handleHome} = props;
+  const {
+    handleSearch,
+    handleAppointment,
+    handleSettings,
+    handleHome,
+    handleHospital,
+  } = props;
 
   const [searchContent, setSearchContent] = useState('');
   const [keyboardVisible, setKeyboardVisible] = useState(false);
@@ -290,6 +296,7 @@ function HomeScreenUI(props) {
               contentContainerStyle={{paddingHorizontal: 10}}>
               {categories.map((category, index) => (
                 <TouchableOpacity
+                  onPress={handleCategory}
                   key={index}
                   style={{
                     marginRight: 10,
@@ -424,6 +431,7 @@ function HomeScreenUI(props) {
               contentContainerStyle={{paddingHorizontal: 10}}>
               {popularDoctors.map((doctor, index) => (
                 <TouchableOpacity
+                  onPress={handleHospital}
                   key={index}
                   style={{
                     marginRight: 10,

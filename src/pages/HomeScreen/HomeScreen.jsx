@@ -10,9 +10,24 @@ function HomeScreen(props) {
     navigation.navigate('DoctorDetail');
   };
 
+  const handleCategory = () => {
+    console.log('Showing category screen');
+    navigation.navigate('CategoryScreen');
+  };
+
+  const handleHospital = () => {
+    console.log('Showing hospital details');
+    navigation.navigate('HospitalDetail');
+  };
+
   return (
     <View style={{flex: 1}}>
-      <HomeScreenUI handleDoctor={handleDoctor} navigation={navigation} />
+      <HomeScreenUI
+        handleHospital={handleHospital}
+        handleCategory={handleCategory}
+        handleDoctor={handleDoctor}
+        navigation={navigation}
+      />
     </View>
   );
 }
