@@ -9,6 +9,9 @@ import {Dimensions} from 'react-native';
 // components
 import NextButton from '../../components/common/NextButton';
 
+// importing lottie
+import LottieView from 'lottie-react-native';
+
 function Features(props) {
   const {onPress, navigation} = props;
   const [activeSlide, setActiveSlide] = useState(0);
@@ -19,17 +22,17 @@ function Features(props) {
     {
       title: 'Skip the queue, book your hospital appointments on the go',
       text: 'Book hospital appointments instantly from your phone.',
-      image: require('../../assets/nurseHappy.png'),
+      image: require('../../assets/animatedGifs/doctorPatient.json'),
     },
     {
       title: 'Streamline your healthcare experience',
       text: 'Say goodbye to waiting rooms and hello to convenience',
-      image: require('../../assets/doctorPatient.jpg'),
+      image: require('../../assets/animatedGifs/searchAnimation.json'),
     },
     {
       title: 'Your health, your time – book appointments with ease.',
       text: 'Book, manage, and track your appointments effortlessly',
-      image: require('../../assets/doctorPatient2.png'),
+      image: require('../../assets/animatedGifs/patientQueue.json'),
     },
   ]);
 
@@ -52,15 +55,13 @@ function Features(props) {
   const renderItem = ({item, index}) => {
     return (
       <View style={styles.carouselContainer}>
-        <Image
-          style={{
-            objectFit: 'contain',
-            width: '100%',
-            height: '60%',
-          }}
+        <LottieView
+          // source={require('../../assets/animatedGifs/doctorPatient.json')}
           source={item.image}
+          style={{width: '100%', height: '100%'}}
+          autoPlay
         />
-        <Text style={{fontSize: 14, fontWeight: 'bold', color: 'black'}}>
+        <Text style={{fontSize: 14, fontWeight: 'bold', color: 'white'}}>
           {item.title}
         </Text>
         <Text
@@ -68,7 +69,7 @@ function Features(props) {
             fontSize: 13,
             fontWeight: 'bold',
             textAlign: 'center',
-            color: 'black',
+            color: 'white',
           }}>
           {item.text}
         </Text>
@@ -147,10 +148,12 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#01DDB3',
   },
   carouselContainer: {
     height: '80%',
     width: '100%',
+
     justifyContent: 'center',
     alignItems: 'center',
   },

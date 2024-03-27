@@ -22,7 +22,8 @@ import LoadingAnimation from '../../../elements/loading.js';
 
 // importing images
 // import Logo from '../../../assets/logo.png';
-import otpImage from '../../../assets/otpImage.png';
+
+import LottieView from 'lottie-react-native';
 
 function Otp(props) {
   const {navigation, resendOtp, onPress} = props;
@@ -76,9 +77,20 @@ function Otp(props) {
               flexGrow: 1,
             }}>
             {isLoaderVisible && <LoadingAnimation />}
-            <Image
+            {/* <Image
               style={{objectFit: 'contain', width: '50%', height: '40%'}}
               source={otpImage}
+            /> */}
+            <LottieView
+              source={require('../../../assets/animatedGifs/otp.json')}
+              style={{
+                width: 250,
+                height: 200,
+                marginBottom: 20,
+                marginLeft: 30,
+              }}
+              autoPlay
+              loop
             />
             <Text style={{color: 'black', fontSize: 20}}>Enter the OTP</Text>
             <View

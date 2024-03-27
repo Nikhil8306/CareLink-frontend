@@ -1,6 +1,8 @@
 import React from 'react';
 import {Image, View} from 'react-native';
 
+import LottieView from 'lottie-react-native';
+
 function loading() {
   return (
     <View
@@ -9,9 +11,11 @@ function loading() {
         zIndex: 2,
         backgroundColor: 'transparent',
       }}>
-      <Image
-        source={require('../assets/loadingAnimation.gif')}
-        style={{width: 180, height: 180}}
+      <LottieView
+        source={require('../assets/animatedGifs/loader.json')}
+        style={{width: 120, height: 120}}
+        autoPlay
+        loop
       />
     </View>
   );

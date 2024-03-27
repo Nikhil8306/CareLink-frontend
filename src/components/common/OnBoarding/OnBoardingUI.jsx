@@ -7,8 +7,9 @@ import CustomInput from '../../../elements/CustomInput';
 import NextButton from '../NextButton';
 
 // importing images
-import Logo from '../../../assets/logo.png';
-import OnBoardingImage from '../../../assets/OnBoardingImage.jpg';
+// import Logo from '../../../assets/logo.png';
+
+import LottieView from 'lottie-react-native';
 
 // importing redux dispatch
 import {useSelector, useDispatch} from 'react-redux';
@@ -53,13 +54,20 @@ function OnBoarding(props) {
           width: '100%',
           alignItems: 'center',
         }}>
-        <Image
+        {/* <Image
           style={{
             width: '100%',
             height: '60%',
             objectFit: 'contain',
           }}
           source={OnBoardingImage}
+        /> */}
+
+        <LottieView
+          source={require('../../../assets/animatedGifs/onBoarding.json')}
+          style={{width: 200, height: 230}}
+          autoPlay
+          loop
         />
 
         <CustomInput toEnter={'Name'} isButton={false} />

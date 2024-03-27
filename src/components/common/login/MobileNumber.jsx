@@ -16,7 +16,8 @@ import NextButton from '../../common/NextButton';
 import LoadingAnimation from '../../../elements/loading.js';
 
 // importing images
-import MobileNumberImage from '../../../assets/mobileNumber.png';
+
+import LottieView from 'lottie-react-native';
 
 function MobileNumber(props) {
   const [mobileNumber, setMobileNumber] = useState();
@@ -40,7 +41,14 @@ function MobileNumber(props) {
           ]}>
           {isLoaderVisible && <LoadingAnimation />}
 
-          <Image style={styles.image} source={MobileNumberImage} />
+          {/* <Image style={styles.image} source={MobileNumberImage} /> */}
+
+          <LottieView
+            source={require('../../../assets/animatedGifs/mobileNumber.json')}
+            style={{width: 253, height: 253}}
+            autoPlay
+            loop
+          />
           <Text style={styles.title}>Enter your phone number</Text>
           <TextInput
             style={styles.input}
