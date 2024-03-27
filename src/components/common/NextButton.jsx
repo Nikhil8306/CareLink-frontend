@@ -4,32 +4,20 @@ import {Image, TouchableOpacity, View, Text} from 'react-native';
 function NextButton(props) {
   const {destination} = props;
   const {navigation} = props;
-  const {text} = props;
+  // const {text} = props;
   const {mobileNumber} = props;
-  const handleNext = async () => {
-    navigation.navigate(destination);
-    // if (destination === 'OtpScreen') {
-    //   console.log(mobileNumber);
-    //   const response = await fetch('http://192.168.64.246:3000/user/register', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       mobile: mobileNumber,
-    //     }),
-    //   });
 
-    //   if (response.status === 200) {
-    //     navigation.navigate(destination);
-    //   }
-    // } else {
-    // }
-  };
+  const {onPress, text} = props;
+
+  // console.log(text);
+
+  // const handleNext = async () => {
+  //   navigation.navigate(destination);
+  // };
   return (
     <View>
       <TouchableOpacity
-        onPress={handleNext}
+        onPress={onPress}
         style={{
           backgroundColor: '#8BF2D9',
           minHeight: 50,

@@ -2,6 +2,9 @@ import React from 'react';
 import {View} from 'react-native';
 import HomeScreenUI from '../../components/common/home/HomeScreenUI';
 
+// importing use selectior from redux
+import {useSelector} from 'react-redux';
+
 function HomeScreen(props) {
   const {navigation} = props;
 

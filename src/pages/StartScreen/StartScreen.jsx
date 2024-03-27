@@ -1,6 +1,6 @@
 // libraries import
 import React, {useEffect} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Image} from 'react-native';
 
 // image imports
 import logo from '../../assets/logo.png';

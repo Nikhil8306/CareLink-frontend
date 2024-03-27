@@ -9,7 +9,8 @@ import {Dimensions} from 'react-native';
 // components
 import NextButton from '../../components/common/NextButton';
 
-function Features({navigation}) {
+function Features(props) {
+  const {onPress, navigation} = props;
   const [activeSlide, setActiveSlide] = useState(0);
   const screenWidth = Dimensions.get('screen').width;
 
@@ -102,6 +103,10 @@ function Features({navigation}) {
     );
   };
 
+  const handleNext = () => {
+    navigation.navigate('LoginScreen');
+  };
+
   return (
     <View style={styles.container}>
       <Carousel
@@ -122,6 +127,7 @@ function Features({navigation}) {
         }}>
         {pagination()}
         <NextButton
+          onPress={handleNext}
           text={'Next'}
           navigation={navigation}
           destination={'MobileNumber'}

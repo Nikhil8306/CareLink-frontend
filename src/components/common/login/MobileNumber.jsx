@@ -13,20 +13,33 @@ import {
 
 // importing common function
 import NextButton from '../../common/NextButton';
+import LoadingAnimation from '../../../elements/loading.js';
 
 // importing images
 import MobileNumberImage from '../../../assets/mobileNumber.png';
 
-function MobileNumber({navigation}) {
+function MobileNumber(props) {
   const [mobileNumber, setMobileNumber] = useState();
-  const handleNextPress = () => {
-    // Handle navigation to the next screen
+
+  const {navigation, onPress} = props;
+
+  const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+
+  const handleSendOtp = () => {
+    setIsLoaderVisible(true);
+    onPress(mobileNumber);
   };
 
   return (
     <ScrollView style={{height: '100%'}} contentContainerStyle={{flexGrow: 1}}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
+        <View
+          style={[
+            styles.container,
+            isLoaderVisible ? styles.loaderVisible : null,
+          ]}>
+          {isLoaderVisible && <LoadingAnimation />}
+
           <Image style={styles.image} source={MobileNumberImage} />
           <Text style={styles.title}>Enter your phone number</Text>
           <TextInput
@@ -35,21 +48,13 @@ function MobileNumber({navigation}) {
             placeholderTextColor="black"
             keyboardType="numeric"
             onChangeText={text => {
-              // console.log(mobileNumber);
               setMobileNumber(text);
             }}
           />
           <Text style={styles.info}>
             We will send an OTP for verification to your number
           </Text>
-          <TouchableOpacity style={styles.button} onPress={handleNextPress}>
-            <NextButton
-              text="Confirm"
-              navigation={navigation}
-              destination={'OtpScreen'}
-              mobileNumber={mobileNumber}
-            />
-          </TouchableOpacity>
+          <NextButton onPress={handleSendOtp} text="Confirm" />
         </View>
       </TouchableWithoutFeedback>
     </ScrollView>
@@ -63,6 +68,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     backgroundColor: 'white',
+  },
+
+  loaderVisible: {
+    pointerEvents: 'none',
   },
   image: {
     width: 200,

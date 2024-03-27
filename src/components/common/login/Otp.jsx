@@ -18,16 +18,20 @@ import NextButton from '../../common/NextButton';
 // importing common component
 import BackIcon from '../../../elements/BackIcon';
 
+import LoadingAnimation from '../../../elements/loading.js';
+
 // importing images
 // import Logo from '../../../assets/logo.png';
 import otpImage from '../../../assets/otpImage.png';
 
 function Otp(props) {
-  const {navigation, resendOtp, verifyOtp} = props;
+  const {navigation, resendOtp, onPress} = props;
   const [Otp, setOtp] = useState([useRef(), useRef(), useRef(), useRef()]);
   const screenHeight = Dimensions.get('screen').height;
   const [currentTime, setCurrentTime] = useState(60);
   const [timerVisible, setTimerVisible] = useState(true);
+
+  const [isLoaderVisible, setIsLoaderVisible] = useState(false);
 
   const handleInputChange = (value, index) => {
     if (value.length === 1 && index < 4) {
@@ -56,6 +60,10 @@ function Otp(props) {
     setCurrentTime(60); // Reset timer
   };
 
+  const handleVerifyOtp = () => {
+    onPress(Otp);
+  };
+
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -67,6 +75,7 @@ function Otp(props) {
               justifyContent: 'center',
               flexGrow: 1,
             }}>
+            {isLoaderVisible && <LoadingAnimation />}
             <Image
               style={{objectFit: 'contain', width: '50%', height: '40%'}}
               source={otpImage}
@@ -89,6 +98,7 @@ function Otp(props) {
                       width: '100%',
                       textAlign: 'center',
                       fontSize: 20,
+                      color: 'black',
                     }}
                     maxLength={1}
                     onChangeText={text => handleInputChange(text, index)}
@@ -108,12 +118,7 @@ function Otp(props) {
               )}
             </View>
             <View style={{position: 'absolute', bottom: 20}}>
-              <NextButton
-                navigation={navigation}
-                destination={'OnBoarding'}
-                text={'Verify'}
-                onPress={verifyOtp}
-              />
+              <NextButton text={'Verify'} onPress={handleVerifyOtp} />
             </View>
           </View>
         </ScrollView>

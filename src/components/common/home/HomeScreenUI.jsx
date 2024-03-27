@@ -136,6 +136,12 @@ function HomeScreenUI(props) {
     {name: 'Pediatric', photo: ''},
     {name: 'Ortho', photo: ''},
     {name: 'Pediatric', photo: ''},
+    {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
+    {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
+    {name: 'Ortho', photo: ''},
+    {name: 'Pediatric', photo: ''},
   ]);
 
   useEffect(() => {
@@ -169,11 +175,13 @@ function HomeScreenUI(props) {
         <View style={{backgroundColor: '#EDFAF6', flex: 1}}>
           <View
             style={{
-              flex: 0.5,
+              flex: 0.3,
+
               alignItems: 'center',
               flexDirection: 'row',
               justifyContent: 'space-between',
               minHeight: 35,
+              maxHeight: 80,
             }}>
             <View
               style={{
@@ -221,7 +229,7 @@ function HomeScreenUI(props) {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{paddingHorizontal: 10}}>
+              contentContainerStyle={{paddingHorizontal: 10, paddingTop: 10}}>
               {consultants.map((consultant, index) => (
                 <View
                   key={index}
@@ -229,8 +237,9 @@ function HomeScreenUI(props) {
                     marginRight: 10,
                     minWidth: 270,
                     flexDirection: 'row',
-                    minHeight: 120,
+                    minHeight: 100,
                     alignItems: 'center',
+                    // maxHeight: 200,
                   }}>
                   <View
                     style={{
@@ -278,8 +287,10 @@ function HomeScreenUI(props) {
           <View
             style={{
               backgroundColor: '#EDFAF6',
+              justifyContent: 'space-around',
               flex: 0.25,
               paddingVertical: 10,
+              // maxHeight: 190,
             }}>
             <Text
               style={{
@@ -293,7 +304,11 @@ function HomeScreenUI(props) {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{paddingHorizontal: 10}}>
+              contentContainerStyle={{
+                paddingHorizontal: 10,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
               {categories.map((category, index) => (
                 <TouchableOpacity
                   onPress={handleCategory}
@@ -326,11 +341,14 @@ function HomeScreenUI(props) {
             style={{
               backgroundColor: '#EDFAF6',
               flex: 0.25,
-              paddingVertical: 10,
+              // paddingVertical: 10,
+              maxHeight: 200,
+              flexDirection: 'column',
+              justifyContent: 'space-between',
             }}>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 21,
                 fontWeight: 'bold',
                 marginLeft: 10,
                 color: 'black',
@@ -342,8 +360,8 @@ function HomeScreenUI(props) {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{
                 paddingHorizontal: 10,
-
-                // height: '100%',
+                flexDirection: 'row',
+                alignItems: 'center',
               }}>
               {popularDoctors.map((doctor, index) => (
                 <TouchableOpacity
@@ -411,14 +429,16 @@ function HomeScreenUI(props) {
           </View>
           <View
             style={{
-              marginBottom: 40,
+              marginBottom: 43,
               backgroundColor: '#EDFAF6',
+              justifyContent: 'space-around',
               flex: 0.25,
               paddingVertical: 10,
+              maxHeight: 230,
             }}>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 21,
                 fontWeight: 'bold',
                 marginLeft: 10,
                 color: 'black',
@@ -428,12 +448,17 @@ function HomeScreenUI(props) {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{paddingHorizontal: 10}}>
+              contentContainerStyle={{
+                paddingHorizontal: 10,
+                // backgroundColor: 'blue',
+                maxHeight: 200,
+              }}>
               {popularDoctors.map((doctor, index) => (
                 <TouchableOpacity
                   onPress={handleHospital}
                   key={index}
                   style={{
+                    backgroundColor: 'yellow',
                     marginRight: 10,
                     minWidth: 270,
                     minHeight: 140,

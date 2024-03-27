@@ -7,6 +7,7 @@ import homeImage from '../../../../assets/home.jpg';
 import settingsImage from '../../../../assets/settings.jpg';
 import searchImage from '../../../../assets/search.jpg';
 import appointmentImage from '../../../../assets/appointment.jpg';
+import medicineIcon from '../../../../assets/medicineIcon.jpg';
 
 function BottomNavigator(props) {
   const {navigation} = props;
@@ -24,6 +25,11 @@ function BottomNavigator(props) {
   const handleAppointment = () => {
     console.log('Handle Search presed');
     navigation.navigate('Appointments');
+  };
+
+  const handleMedicine = () => {
+    console.log('Handle Medicine pressed');
+    navigation.navigate('Medicine');
   };
 
   return (
@@ -51,6 +57,14 @@ function BottomNavigator(props) {
             objectFit: 'contain',
           }}
           source={searchImage}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handleMedicine}
+        style={{flex: 0.21, justifyContent: 'center'}}>
+        <Image
+          style={{width: '90%', height: '70%', objectFit: 'contain'}}
+          source={medicineIcon}
         />
       </TouchableOpacity>
       <TouchableOpacity

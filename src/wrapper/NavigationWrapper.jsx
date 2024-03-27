@@ -17,10 +17,18 @@ import DoctorDetail from '../pages/DoctorDetail/DoctorDetail';
 import BookScreen from '../pages/BookScreen/BookScreen';
 import Categories from '../pages/Categories/Categories';
 import HospitalDetail from '../pages/HospitalDetail/HospitalDetail';
+import LoginScreen from '../pages/LoginScreen/LoginScreen';
+
+// importing redux tools
+import {useSelector} from 'react-redux';
+
+// importing common functions
+import {isOnBoardingRequired, isLoginRequired} from '../utils/commonFunctions';
+import Medicine from '../pages/Medicine/Medicine';
 
 function NavigationWrapper(props) {
   const {navigationRef} = props;
-  console.log(navigationRef);
+
   const Stack = createNativeStackNavigator();
 
   return (
@@ -30,7 +38,7 @@ function NavigationWrapper(props) {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="StartScreen" component={StartScreen} />
         <Stack.Screen name="Features" component={Features} />
-        <Stack.Screen name="MobileNumber" component={MobileNumber} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="OtpScreen" component={Otp} />
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
@@ -44,6 +52,7 @@ function NavigationWrapper(props) {
         <Stack.Screen name="CategoryScreen" component={Categories} />
 
         <Stack.Screen name="HospitalDetail" component={HospitalDetail} />
+        <Stack.Screen name="Medicine" component={Medicine} />
       </Stack.Navigator>
     </NavigationContainer>
   );

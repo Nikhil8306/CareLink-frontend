@@ -10,7 +10,14 @@ import NextButton from '../NextButton';
 import Logo from '../../../assets/logo.png';
 import OnBoardingImage from '../../../assets/OnBoardingImage.jpg';
 
-function OnBoarding({navigation}) {
+// importing redux dispatch
+import {useSelector, useDispatch} from 'react-redux';
+// import {updateDetails} from '../../../pages/store/slices/userDetails';
+
+function OnBoarding(props) {
+  const dispatch = useDispatch();
+
+  const {onPress, navigation} = props;
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [gender, setGender] = useState();
 
@@ -22,6 +29,11 @@ function OnBoarding({navigation}) {
     setGender(gender);
     setDropdownVisible(false);
   };
+
+  // const saveUserDetails = () => {
+  //   dispatch(updateDetails({name: 'Nikhil', age: 30}));
+  //   navigation.navigate('HomeScreen');
+  // };
 
   return (
     <View
@@ -74,11 +86,7 @@ function OnBoarding({navigation}) {
             justifyContent: 'flex-end',
             alignItems: 'center',
           }}>
-          <NextButton
-            navigation={navigation}
-            text={'Finish'}
-            destination={'HomeScreen'}
-          />
+          <NextButton onPress={onPress} text={'Finish'} />
           {isDropdownVisible ? <Dropdown handleGender={handleGender} /> : null}
         </View>
       }
