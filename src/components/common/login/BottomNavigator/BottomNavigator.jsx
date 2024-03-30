@@ -8,6 +8,7 @@ import settingsImage from '../../../../assets/settings.jpg';
 import searchImage from '../../../../assets/search.jpg';
 import appointmentImage from '../../../../assets/appointment.jpg';
 import medicineIcon from '../../../../assets/medicineIcon.jpg';
+import benefitsImage from '../../../../assets/benefitsImage.jpg';
 
 function BottomNavigator(props) {
   const {navigation} = props;
@@ -32,6 +33,11 @@ function BottomNavigator(props) {
     navigation.navigate('Medicine');
   };
 
+  const handleBenifits = () => {
+    console.log('benefits screen ');
+    navigation.navigate('Benifits');
+  };
+
   return (
     <View
       style={{
@@ -43,7 +49,7 @@ function BottomNavigator(props) {
         onPress={handleHome}
         style={{flex: 0.2, justifyContent: 'center'}}>
         <Image
-          style={{width: '90%', height: '70%', objectFit: 'contain'}}
+          style={{width: '90%', height: '60%', objectFit: 'contain'}}
           source={homeImage}
         />
       </TouchableOpacity>
@@ -53,7 +59,7 @@ function BottomNavigator(props) {
         <Image
           style={{
             width: '90%',
-            height: '70%',
+            height: '60%',
             objectFit: 'contain',
           }}
           source={searchImage}
@@ -63,7 +69,7 @@ function BottomNavigator(props) {
         onPress={handleMedicine}
         style={{flex: 0.21, justifyContent: 'center'}}>
         <Image
-          style={{width: '90%', height: '70%', objectFit: 'contain'}}
+          style={{width: '90%', height: '60%', objectFit: 'contain'}}
           source={medicineIcon}
         />
       </TouchableOpacity>
@@ -71,16 +77,16 @@ function BottomNavigator(props) {
         onPress={handleAppointment}
         style={{flex: 0.21, justifyContent: 'center'}}>
         <Image
-          style={{width: '90%', height: '80%', objectFit: 'contain'}}
+          style={{width: '90%', height: '60%', objectFit: 'contain'}}
           source={appointmentImage}
         />
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={handleSettings}
+        onPress={handleBenifits}
         style={{flex: 0.21, justifyContent: 'center'}}>
         <Image
-          style={{width: '90%', height: '70%', objectFit: 'contain'}}
-          source={settingsImage}
+          style={{width: '90%', height: '60%', objectFit: 'contain'}}
+          source={benefitsImage}
         />
       </TouchableOpacity>
     </View>

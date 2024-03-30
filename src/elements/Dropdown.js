@@ -7,6 +7,7 @@ import BottomSheet, {
 
 function Dropdown(props) {
   const {handleGender} = props;
+  const {handleInputs} = props;
   const bottomSheetRef = useRef(null);
   // const handleSheetChanges = useCallback(index => {
   //   console.log('handleSheetChanges', index);
@@ -36,7 +37,8 @@ function Dropdown(props) {
               justifyContent: 'center',
             }}>
             <Text style={{fontSize: 18, color: 'black', fontWeight: '900'}}>
-              Male🗿
+              Male
+              {/* {handleInputs[0]} */}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -53,7 +55,24 @@ function Dropdown(props) {
               justifyContent: 'center',
             }}>
             <Text style={{fontSize: 18, color: 'black', fontWeight: '900'}}>
-              Female🗿
+              Female
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              handleGender('Other');
+            }}
+            style={{
+              width: 270,
+              height: 50,
+              // height: '40%',
+              marginTop: 10,
+
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text style={{fontSize: 18, color: 'black', fontWeight: '900'}}>
+              Others
             </Text>
           </TouchableOpacity>
         </BottomSheetView>

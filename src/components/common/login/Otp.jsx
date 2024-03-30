@@ -26,7 +26,7 @@ import LoadingAnimation from '../../../elements/loading.js';
 import LottieView from 'lottie-react-native';
 
 function Otp(props) {
-  const {navigation, resendOtp, onPress} = props;
+  const {navigation, resendOtp, onPress, mobileNumber} = props;
   const [Otp, setOtp] = useState([useRef(), useRef(), useRef(), useRef()]);
   const screenHeight = Dimensions.get('screen').height;
   const [currentTime, setCurrentTime] = useState(60);
@@ -34,10 +34,34 @@ function Otp(props) {
 
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
 
+  // const handleInputChange = (value, index) => {
+  //   if (value.length === 1 && index < 4) {
+  //     if (index === 3) {
+  //       console.log(Otp);
+  //       onPress(Otp);
+  //       // navigation.navigate('OnBoarding');
+  //     } else if (index < 3) {
+  //       Otp[index + 1].current.focus();
+  //     }
+  //   }
+  // };
   const handleInputChange = (value, index) => {
-    if (value.length === 1 && index < 4) {
+    // Update the OTP value for the current input field
+    const updatedOtp = [...Otp];
+    updatedOtp[index].current._lastNativeText = value;
+    setOtp(updatedOtp);
+
+    // Concatenate all the OTP values to form the complete OTP
+    const otpValues = updatedOtp
+      .map(ref => ref.current._lastNativeText)
+      .join('');
+
+    console.log('OTP:', otpValues); // Log the OTP value
+
+    if (value.length === 1) {
       if (index === 3) {
-        navigation.navigate('OnBoarding');
+        // If last digit is entered
+        onPress(otpValues, mobileNumber);
       } else if (index < 3) {
         Otp[index + 1].current.focus();
       }
@@ -62,7 +86,7 @@ function Otp(props) {
   };
 
   const handleVerifyOtp = () => {
-    onPress(Otp);
+    onPress(Otp, mobileNumber);
   };
 
   return (

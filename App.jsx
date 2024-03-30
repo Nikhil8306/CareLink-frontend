@@ -12,10 +12,14 @@ import Geolocation from 'react-native-geolocation-service';
 // importing notifications
 import messaging from '@react-native-firebase/messaging';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function App() {
   useEffect(() => {
     console.log('App started');
+
     getLocation();
+    savingToken();
     requestUserPermission();
     getToken();
   }, []);
@@ -62,6 +66,15 @@ function App() {
         );
       }
     });
+  };
+
+  const savingToken = async () => {
+    await AsyncStorage.setItem(
+      'accessToken',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjA3ZDQ5NzI5Y2E0MTBmZjJiNDFmMzQiLCJpYXQiOjE3MTE3ODk1MjEsImV4cCI6MTcxMTc5MzEyMX0.vYSCuVBP62skB2ozACadp0MOY_HYAxiWPrkAt04opCY',
+    );
+
+    console.log('Done ');
   };
 
   async function requestUserPermission() {

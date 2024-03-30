@@ -9,6 +9,11 @@ import settingsIcon from '../../../assets/settingsIcon.jpg';
 
 function SettingsUI(props) {
   const {navigation} = props;
+
+  const handleMyProfile = () => {
+    navigation.navigate('MedicalHistory');
+  };
+
   return (
     <View style={{flex: 1, backgroundColor: '#EBF9F5'}}>
       <View
@@ -31,6 +36,7 @@ function SettingsUI(props) {
           justifyContent: 'space-around',
         }}>
         <TouchableOpacity
+          onPress={handleMyProfile}
           style={{
             flexDirection: 'row',
             alignItems: 'center',

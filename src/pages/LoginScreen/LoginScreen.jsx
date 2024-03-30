@@ -12,48 +12,64 @@ import Otp from '../../components/common/login/Otp.jsx';
 function LoginScreen({navigation}) {
   const [isOtpSent, setIsOtpSent] = useState(false);
 
+  const [mobileNumber, setMobileNumber] = useState();
+
   const resendOtp = () => {
     console.log('resending the otp');
   };
 
-  const verifyOtp = async otp => {
-    navigation.replace('OnBoarding');
+  const verifyOtp = async (otp, mobileNumber) => {
+    console.log('Verfiying otp');
+    console.log(otp, mobileNumber);
+    const response = await fetch('http://192.168.104.246:3030/user/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Specify the content type of the request body
+      },
+      body: JSON.stringify({
+        // Convert body to JSON string
+        mobile: mobileNumber,
+        otp: otp,
+      }),
+    });
 
-    // yahana otp verfication hoga
-    // try {
-    //   const response = await fetch('http://localhost:3000');
-    //   if (response.status === 200) {
-    //     const data = await response.json();
-    //     const token = data.token;
+    if (response.status === 200) {
+      // const data = await response.json();
+      const {accessToken, refreshToken} = response; // Assuming backend sends access token and refresh token
+      console.log(response);
+      console.log(response.accessToken);
+      console.log(response.refreshToken);
+      await AsyncStorage.setItem('accessToken', accessToken);
+      await AsyncStorage.setItem('refreshToken', refreshToken);
 
-    //     // Store token in AsyncStorage
-    //     await AsyncStorage.setItem('JWTTOKEN', token);
-    //     Alert.alert('Token saved');
-    //   } else {
-    //     console.error('Failed to fetch token. Status:', response.status);
-    //   }
-    // } catch (error) {
-    //   console.error('Error fetching token:', error);
-    // }
+      navigation.replace('OnBoarding');
+    } else {
+      console.error('error in verifying otp');
+    }
+    // navigation.replace('OnBoarding');
   };
 
   const handleSendOtp = async mobileNumber => {
     console.log('OTP sent');
+    setMobileNumber(mobileNumber);
 
-    // const response = await fetch('http:localhost:3000');
+    const response = await fetch('http://192.168.104.246:3030/user/sendOTP', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Specify the content type of the request body
+      },
+      body: JSON.stringify({
+        // Convert body to JSON string
+        mobile: mobileNumber,
+      }),
+    });
 
-    // Will write the api when backend is ready
-    setTimeout(() => {
-      console.log('Time over redirecting to otp');
+    if (response.status === 200) {
       setIsOtpSent(true);
-      // navigation.navigate('OtpScreen');
-    }, 3000);
-
-    // if (response.status === 200) {
-    //   isOtpSent(true);
-    // } else {
-    //   console.log('Failed to recived OTP');
-    // }
+    } else {
+      console.log(response.status);
+      console.error('Error in sending OTP');
+    }
   };
 
   return (
@@ -64,6 +80,7 @@ function LoginScreen({navigation}) {
         <Otp
           navigation={navigation}
           onPress={verifyOtp}
+          mobileNumber={mobileNumber}
           // verifyOtp={verifyOtp}
           // resendOtp={resendOtp}
         />

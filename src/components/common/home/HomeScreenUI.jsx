@@ -15,8 +15,14 @@ import locationImage from '../../../assets/locationImage.jpg';
 import notificationImage from '../../../assets/notification.jpg';
 import profileImage from '../../../assets/profile.jpg';
 
+import settingsImage from '../../../assets/settings.jpg';
+
 // importing components
 import BottomNavigator from '../login/BottomNavigator/BottomNavigator';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import profile_icon from '../../../assets/profile_icon.jpg';
 
 function HomeScreenUI(props) {
   const {navigation, handleDoctor, handleCategory} = props;
@@ -165,6 +171,22 @@ function HomeScreenUI(props) {
     };
   }, []);
 
+  useEffect(() => {
+    // request for getting doctors
+    // fetchingDoctors();
+  }, []);
+
+  // const fetchingDoctors = async () => {
+  //   const response = await fetch('http://192.168.104.246:3030/user/getDoctor', {
+  //     method: 'GET',
+  //   });
+  //   const doctors = (await response.json()).data;
+
+  //   setPopularDoctors(doctors);
+
+  //   console.log('Fetching doctors', doctors, response.status);
+  // };
+
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
@@ -190,13 +212,21 @@ function HomeScreenUI(props) {
                 alignItems: 'center',
               }}>
               <Image
-                style={{objectFit: 'contain', height: '70%', width: '20%'}}
+                style={{
+                  objectFit: 'contain',
+                  height: '70%',
+                  width: '20%',
+                  marginLeft: 8,
+                }}
                 source={locationImage}
               />
-              <Text style={{color: 'black'}}>New york, USA</Text>
+              <Text style={{color: 'black'}}>Jaipur, Raj</Text>
             </View>
             <View style={{width: '15%', height: '100%', alignItems: 'center'}}>
               <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Settings');
+                }}
                 style={{
                   height: '100%',
                   width: '100%',
@@ -204,8 +234,13 @@ function HomeScreenUI(props) {
                   justifyContent: 'center',
                 }}>
                 <Image
-                  source={notificationImage}
-                  style={{height: '60%', width: '70%', objectFit: 'contain'}}
+                  source={profile_icon}
+                  style={{
+                    marginTop: 4,
+                    height: '80%',
+                    width: '80%',
+                    objectFit: 'contain',
+                  }}
                 />
               </TouchableOpacity>
             </View>
@@ -298,6 +333,7 @@ function HomeScreenUI(props) {
                 fontWeight: 'bold',
                 marginLeft: 10,
                 color: 'black',
+                marginBottom: 6,
               }}>
               Categories
             </Text>
@@ -352,6 +388,7 @@ function HomeScreenUI(props) {
                 fontWeight: 'bold',
                 marginLeft: 10,
                 color: 'black',
+                marginBottom: 6,
               }}>
               Popular Doctors
             </Text>
@@ -363,7 +400,7 @@ function HomeScreenUI(props) {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              {popularDoctors.map((doctor, index) => (
+              {popularDoctors.map((element, index) => (
                 <TouchableOpacity
                   onPress={handleDoctor}
                   key={index}
@@ -407,19 +444,34 @@ function HomeScreenUI(props) {
                         paddingLeft: 10,
                       }}>
                       <Text style={{fontSize: 18, color: 'black'}}>
-                        {doctor.name}
+                        {/* {doctor.name.charAt(0).toUpperCase() +
+                          doctor.name.slice(1)} */}
+                        Nikhil
                       </Text>
-                      <Text style={{fontSize: 16, color: 'black'}}>
-                        {doctor.specialty}
+                      <Text style={{fontSize: 18, color: 'black'}}>
+                        MBBS
+                        {/* {doctor.specializations[0]} */}
                       </Text>
 
                       <View
                         style={{
                           flexDirection: 'row',
                           justifyContent: 'space-between',
+                          // backgroundColor: 'red',
                         }}>
-                        <Text style={{color: 'black'}}>{doctor.location}</Text>
-                        <Text style={{color: 'black'}}>{doctor.rating}</Text>
+                        <Text style={{color: 'black'}}>
+                          {/* {doctor?.location} */}
+                          London
+                        </Text>
+                        <Text
+                          style={{
+                            color: 'black',
+                            fontSize: 20,
+                            alignSelf: 'flex-start',
+                          }}>
+                          {/* MBBS */}
+                          {/* {doctor?.qualifications[0]} */}
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -442,6 +494,7 @@ function HomeScreenUI(props) {
                 fontWeight: 'bold',
                 marginLeft: 10,
                 color: 'black',
+                marginBottom: 6,
               }}>
               Popular Hospitals
             </Text>
@@ -487,8 +540,8 @@ function HomeScreenUI(props) {
           height: '6.2%',
           width: '100%',
           backgroundColor: '#ACEFE1',
-          borderTopLeftRadius: 30,
-          borderTopRightRadius: 30,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
           alignItems: 'center',
           justifyContent: 'center',
         }}>

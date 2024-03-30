@@ -8,10 +8,62 @@ import OnBoardingUI from '../../components/common/OnBoarding/OnBoardingUI';
 
 import {useDispatch} from 'react-redux';
 
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function OnBoarding({navigation}) {
-  const handleFinish = (name, age, gender) => {
+  const handleFinish = async (
+    name,
+    age,
+    gender,
+    address,
+    state,
+    BPL,
+    aadhaar,
+  ) => {
     console.log('Moving to the homepage');
-    navigation.navigate('HomeScreen');
+    console.log(name);
+    console.log(age);
+    console.log(gender);
+    console.log(state);
+    console.log(BPL);
+
+    console.log('tokens are ', AsyncStorage.getItem('accessToken'));
+    console.log('tokens are ', AsyncStorage.getItem('refreshToken'));
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `${accessToken}`,
+      'Refresh-Token': refreshToken,
+    };
+
+    const response = await fetch(
+      'http://192.168.104.246:3030/user/updateProfile',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Specify the content type of the request body
+          headers: headers,
+        },
+        body: JSON.stringify({
+          // Convert body to JSON string
+          age,
+          name,
+          address,
+          BPL,
+          aadhaar,
+          state,
+          gender,
+        }),
+      },
+    );
+
+    console.log(response);
+
+    if (response.status === 200) {
+      navigation.replace('HomeScreen');
+    } else {
+      console.error('Error in updating profile');
+    }
   };
 
   return (
