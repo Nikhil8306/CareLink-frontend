@@ -24,6 +24,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import profile_icon from '../../../assets/profile_icon.jpg';
 
+import hairCategory from '../../../assets/hairCategory.jpeg';
+import skinCategory from '../../../assets/skinCategory.jpeg';
+import liverCategory from '../../../assets/liverCategory.jpeg';
+import heartCategory from '../../../assets/heartCategory.jpeg';
+import eyeCategory from '../../../assets/eyeCategory.jpeg';
+
 function HomeScreenUI(props) {
   const {navigation, handleDoctor, handleCategory} = props;
 
@@ -40,114 +46,107 @@ function HomeScreenUI(props) {
 
   const [consultants, setConsultants] = useState([
     {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
     {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
     {name: 'Nikhil', type: 'dentist', date: '12/12/12', time: '12:00PM'},
-    {name: 'Chomu', type: 'dentist', date: '12/12/12', time: '12:00PM'},
   ]);
 
-  const [popularDoctors, setPopularDoctors] = useState([
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
+  // const [popularDoctors, setPopularDoctors] = useState([
+  //   {
+  //     name: 'Dr poonia',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
 
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr poonia',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-    {
-      name: 'Dr soni',
-      specialty: 'Cardio',
-      location: 'London',
-      rating: '4.6',
-      reviews: '762',
-    },
-  ]);
+  //   {
+  //     name: 'Dr poonia',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr poonia',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr poonia',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr poonia',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  //   {
+  //     name: 'Dr soni',
+  //     specialty: 'Cardio',
+  //     location: 'London',
+  //     rating: '4.6',
+  //     reviews: '762',
+  //   },
+  // ]);
+
+  const [popularDoctors, setPopularDoctors] = useState([]);
+  const [popularHospitals, setPopularHospitals] = useState([]);
 
   const [categories, setCategories] = useState([
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
-    {name: 'Ortho', photo: ''},
-    {name: 'Pediatric', photo: ''},
+    {name: 'Hair', photo: hairCategory},
+    {name: 'Liver', photo: liverCategory},
+    {name: 'Heart', photo: heartCategory},
+    {name: 'Skin', photo: skinCategory},
+    {name: 'Eye', photo: eyeCategory},
   ]);
 
   useEffect(() => {
@@ -173,19 +172,39 @@ function HomeScreenUI(props) {
 
   useEffect(() => {
     // request for getting doctors
-    // fetchingDoctors();
+    fetchingDoctors();
+    fetchingHospitals();
   }, []);
 
-  // const fetchingDoctors = async () => {
-  //   const response = await fetch('http://192.168.104.246:3030/user/getDoctor', {
-  //     method: 'GET',
-  //   });
-  //   const doctors = (await response.json()).data;
+  const fetchingDoctors = async () => {
+    const response = await fetch('http://192.168.104.246:3030/user/getDoctor', {
+      method: 'GET',
+    });
+    const doctors = (await response.json()).data;
 
-  //   setPopularDoctors(doctors);
+    setPopularDoctors(doctors);
 
-  //   console.log('Fetching doctors', doctors, response.status);
-  // };
+    // console.log('Fetching doctors', doctors, response.status);
+  };
+
+  const fetchingHospitals = async () => {
+    const response = await fetch(
+      'http://192.168.104.246:3030/user/getHospital',
+      {
+        method: 'GET',
+      },
+    );
+
+    const hospitals = (await response.json()).data;
+
+    console.log(hospitals);
+
+    setPopularHospitals(hospitals);
+  };
+
+  const handleDoctorDetail = (name, specializations, photo, experience) => {
+    handleDoctor(name, specializations, photo, experience);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -362,7 +381,7 @@ function HomeScreenUI(props) {
                     }}>
                     <Image
                       style={{width: 50, height: 50, borderRadius: 25}}
-                      source={profileImage}
+                      source={category.photo}
                     />
                     <Text style={{color: 'black', fontSize: 17}}>
                       {category.name}
@@ -400,10 +419,10 @@ function HomeScreenUI(props) {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              {popularDoctors.map((element, index) => (
+              {popularDoctors.map((doctor, index) => (
                 <TouchableOpacity
-                  onPress={handleDoctor}
-                  key={index}
+                  onPress={handleDoctorDetail}
+                  key={doctor._id}
                   style={{marginRight: 10}}>
                   <View
                     style={{
@@ -433,7 +452,7 @@ function HomeScreenUI(props) {
                           objectFit: 'cover',
                           borderRadius: 55,
                         }}
-                        source={profileImage}
+                        source={{uri: doctor.profileUrl}}
                       />
                     </View>
 
@@ -444,13 +463,15 @@ function HomeScreenUI(props) {
                         paddingLeft: 10,
                       }}>
                       <Text style={{fontSize: 18, color: 'black'}}>
-                        {/* {doctor.name.charAt(0).toUpperCase() +
-                          doctor.name.slice(1)} */}
-                        Nikhil
+                        Dr.
+                        {doctor.name.charAt(0).toUpperCase() +
+                          doctor.name.slice(1)}
+                        {/* Nikhil */}
                       </Text>
                       <Text style={{fontSize: 18, color: 'black'}}>
-                        MBBS
-                        {/* {doctor.specializations[0]} */}
+                        {/* MBBS */}
+                        {doctor.specializations[0].charAt(0).toUpperCase() +
+                          doctor.specializations[0].slice(1)}
                       </Text>
 
                       <View
@@ -460,8 +481,8 @@ function HomeScreenUI(props) {
                           // backgroundColor: 'red',
                         }}>
                         <Text style={{color: 'black'}}>
-                          {/* {doctor?.location} */}
-                          London
+                          {/* {doctor?.} */}
+                          Jaipur
                         </Text>
                         <Text
                           style={{
@@ -506,10 +527,10 @@ function HomeScreenUI(props) {
                 // backgroundColor: 'blue',
                 maxHeight: 200,
               }}>
-              {popularDoctors.map((doctor, index) => (
+              {popularHospitals.map((hospital, index) => (
                 <TouchableOpacity
                   onPress={handleHospital}
-                  key={index}
+                  key={hospital._id}
                   style={{
                     backgroundColor: 'yellow',
                     marginRight: 10,
@@ -524,7 +545,7 @@ function HomeScreenUI(props) {
                       height: '100%',
                       resizeMode: 'cover',
                     }}
-                    source={profileImage}
+                    source={{uri: hospital.profileUrl}}
                   />
                 </TouchableOpacity>
               ))}

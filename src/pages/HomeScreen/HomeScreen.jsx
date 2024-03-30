@@ -8,14 +8,14 @@ import {useSelector} from 'react-redux';
 function HomeScreen(props) {
   const {navigation} = props;
 
-  const handleDoctor = () => {
+  const handleDoctor = (name, image, specializations, experience) => {
     console.log('Doctor pressed');
     navigation.navigate('DoctorDetail');
   };
 
-  const handleCategory = () => {
+  const handleCategory = category => {
     console.log('Showing category screen');
-    navigation.navigate('CategoryScreen');
+    navigation.navigate('CategoryScreen', category);
   };
 
   const handleHospital = () => {

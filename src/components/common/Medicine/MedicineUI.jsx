@@ -43,7 +43,7 @@ function MedicineUI(props) {
             style={{
               maxHeight: 130,
               height: 90,
-              backgroundColor: 'yellow',
+              backgroundColor: '#AEF6E5',
               width: '97%',
               alignSelf: 'center',
               borderRadius: 10,

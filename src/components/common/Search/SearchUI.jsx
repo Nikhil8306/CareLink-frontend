@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   ScrollView,
@@ -18,44 +18,47 @@ import BottomNavigator from '../login/BottomNavigator/BottomNavigator';
 
 function SearchUI(props) {
   const {navigation} = props;
-  const [doctors, setDoctors] = useState([
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
+  // const [doctors, setDoctors] = useState([
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
 
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-  ]);
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  // ]);
 
-  const [hospitals, setHospitals] = useState([
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
+  // const [hospitals, setHospitals] = useState([
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
 
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
 
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-  ]);
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  //   {name: 'Nikhil', heart: 'asdfsdf'},
+  // ]);
+
+  const [doctors, setDoctors] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
 
   const [doctorsVisible, setDoctorsVisible] = useState(true);
 
@@ -67,6 +70,38 @@ function SearchUI(props) {
   const handleShowHospitals = () => {
     console.log('Showing all the hospitals');
     setDoctorsVisible(false);
+  };
+
+  useEffect(() => {
+    // request for getting doctors
+    fetchingDoctors();
+    fetchingHospitals();
+  }, []);
+
+  const fetchingDoctors = async () => {
+    const response = await fetch('http://192.168.104.246:3030/user/getDoctor', {
+      method: 'GET',
+    });
+    const doctors = (await response.json()).data;
+
+    setDoctors(doctors);
+
+    // console.log('Fetching doctors', doctors, response.status);
+  };
+
+  const fetchingHospitals = async () => {
+    const response = await fetch(
+      'http://192.168.104.246:3030/user/getHospital',
+      {
+        method: 'GET',
+      },
+    );
+
+    const hospitals = (await response.json()).data;
+
+    console.log(hospitals);
+
+    setHospitals(hospitals);
   };
 
   return (
@@ -101,9 +136,9 @@ function SearchUI(props) {
           contentContainerStyle={{paddingBottom: 45}}
           showsVerticalScrollIndicator={false}>
           {doctorsVisible
-            ? doctors.map((element, index) => (
+            ? doctors.map((doctor, index) => (
                 <TouchableOpacity
-                  key={index}
+                  key={doctor._id}
                   style={{
                     backgroundColor: '#FFFFFF',
                     maxHeight: 150,
@@ -129,7 +164,8 @@ function SearchUI(props) {
                         width: 90,
                         borderRadius: 50,
                       }}
-                      source={profileImage}
+                      // source={profileImage}
+                      source={{uri: doctor.profileUrl}}
                     />
                   </View>
 
@@ -138,15 +174,21 @@ function SearchUI(props) {
                       flex: 0.5,
                       justifyContent: 'space-around',
                     }}>
-                    <Text style={{fontSize: 18, color: 'black'}}>Name</Text>
+                    <Text style={{fontSize: 18, color: 'black'}}>
+                      {doctor.name}
+                    </Text>
                     <View
                       style={{
                         flexDirection: 'row',
                         width: '70%',
                         justifyContent: 'space-between',
                       }}>
-                      <Text style={{color: 'black'}}>Heart</Text>
-                      <Text style={{color: 'black'}}>Heart</Text>
+                      <Text style={{color: 'black'}}>
+                        {doctor.specializations[0]}
+                      </Text>
+                      <Text style={{color: 'black'}}>
+                        {doctor.specializations[1]}
+                      </Text>
                     </View>
 
                     <Text style={{color: 'black'}}>4.9 ratings</Text>
@@ -181,7 +223,7 @@ function SearchUI(props) {
                   </View>
                 </TouchableOpacity>
               ))
-            : hospitals.map((element, index) => (
+            : hospitals.map((hospital, index) => (
                 <TouchableOpacity
                   style={{
                     borderWidth: 2,
@@ -193,7 +235,7 @@ function SearchUI(props) {
                     alignSelf: 'center',
                     flexDirection: 'row',
                   }}
-                  key={index}>
+                  key={hospitals._id}>
                   <View
                     style={{
                       flex: 1,
@@ -208,7 +250,8 @@ function SearchUI(props) {
                         borderRadius: 25,
                         // objectFit: 'contain',
                       }}
-                      source={profileImage}
+                      // source={profileImage}
+                      source={{uri: hospital.profileUrl}}
                     />
                   </View>
 
@@ -227,7 +270,7 @@ function SearchUI(props) {
                         fontSize: 18,
                         color: 'white',
                       }}>
-                      Soni Hospitals
+                      {hospital.name}
                     </Text>
 
                     <Text style={{color: 'white', fontWeight: 'bold'}}>

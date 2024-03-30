@@ -33,9 +33,15 @@ function BottomNavigator(props) {
     navigation.navigate('Medicine');
   };
 
-  const handleBenifits = () => {
+  const handleBenifits = async () => {
     console.log('benefits screen ');
-    navigation.navigate('Benifits');
+
+    const response = await fetch('http://192.168.104.246:3030/user/getScheme', {
+      method: 'GET',
+    });
+
+    const name = (await response.json()).data;
+    navigation.navigate('Benifits', {name: name});
   };
 
   return (

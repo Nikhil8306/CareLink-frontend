@@ -1,20 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, Text, View, TouchableOpacity, Image} from 'react-native';
 
 // import profileImage from '../../../assets/profile.jpg';
 import hospitalImage from '../../../assets/hospitalImage.jpg';
 
-function SchemesHospitalsUI({navigation}) {
+function SchemesHospitalsUI({navigation, scheme}) {
   const [hospitals, setHospitals] = useState([
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
+    // {name: 'Nikhil', heart: 'asdfsdf'},
   ]);
+
+  console.log(scheme);
+  useEffect(() => {
+    getHospitalWithScheme();
+  }, []);
+
+  const getHospitalWithScheme = async () => {
+    console.log('Requesting for schemes with hospitals');
+    const response = await fetch(
+      'http://192.168.104.246:3030/user/getSchemeHospital',
+      {
+        method: 'GET',
+
+        body: {
+          scheme: scheme,
+        },
+      },
+    );
+
+    console.log(await response.json());
+  };
 
   const handleHospital = () => {
     navigation.navigate('ApplyForScheme');

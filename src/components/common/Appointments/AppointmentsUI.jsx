@@ -60,61 +60,10 @@ function AppointmentsUI(props) {
             style={{fontSize: 18}}
           />
         ) : (
-          <Text style={{fontSize: 19, color: 'black'}}>My Appointments </Text>
-        )}
-
-        <TouchableOpacity
-          onPress={handleSearchButton}
-          style={{
-            backgroundColor: '#8BF2D9',
-            borderRadius: 28,
-            height: 50,
-            width: 60,
-          }}>
-          <Image
-            style={{
-              height: '100%',
-              width: '100%',
-              borderRadius: 28,
-            }}
-            source={profileImage}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View
-        style={{
-          width: '100%',
-          flexDirection: 'row',
-          minHeight: 50,
-          alignItems: 'center',
-          justifyContent: 'space-around',
-        }}>
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#8BF2D9',
-            flex: 0.4,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 10,
-            aspectRatio: 3,
-          }}>
-          <Text style={{color: 'black', alignSelf: 'center', fontSize: 18}}>
-            Upcoming
+          <Text style={{fontSize: 20, fontWeight: 500, color: 'black'}}>
+            My Appointments{' '}
           </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#8BF2D9',
-            height: '85%',
-            flex: 0.4,
-            alignItems: 'center',
-            borderRadius: 10,
-            aspectRatio: 3,
-            justifyContent: 'center',
-          }}>
-          <Text style={{color: 'black', fontSize: 18}}>Completed</Text>
-        </TouchableOpacity>
+        )}
       </View>
 
       <View
@@ -160,6 +109,7 @@ function AppointmentsUI(props) {
                       borderRadius: 50,
                       height: 100,
                       width: 100,
+                      // marginTop: 5,
                     }}
                     source={profileImage}
                   />
@@ -196,28 +146,38 @@ function AppointmentsUI(props) {
                   width: '100%',
                   justifyContent: 'space-around',
                 }}>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: 'grey',
-                    // flex: 0.3,
-                    // width: '30%',
-                    borderRadius: 5,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <Text style={{fontSize: 18}}>Cancel </Text>
-                </TouchableOpacity>
                 <View
                   style={{
-                    backgroundColor: 'grey',
+                    boxSizing: 'border-box',
+                    paddingLeft: 5,
+                    paddingRight: 5,
+                    backgroundColor: '#AEF6E5',
                     // flex: 0.3,
                     // width: '48%',
                     borderRadius: 5,
+
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
                   <Text style={{fontSize: 18, color: 'black'}}>
                     Your turn : 23
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    boxSizing: 'border-box',
+                    paddingLeft: 5,
+                    paddingRight: 5,
+                    backgroundColor: '#AEF6E5',
+                    // flex: 0.3,
+                    // width: '48%',
+                    borderRadius: 5,
+
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text style={{fontSize: 18, color: 'black'}}>
+                    current : 15
                   </Text>
                 </View>
               </View>

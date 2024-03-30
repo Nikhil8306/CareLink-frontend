@@ -12,7 +12,8 @@ import patients from '../../../assets/patients.jpg';
 import reviewIcon from '../../../assets/review.jpg';
 
 function DoctorDetail(props) {
-  const {navigation, handleBookAppointment} = props;
+  const {navigation, handleBookAppointment, doctorDetails} = props;
+  console.log(doctorDetails);
   return (
     <View style={{flex: 1, backgroundColor: '#97F3DD'}}>
       <View
@@ -64,7 +65,10 @@ function DoctorDetail(props) {
           </View>
 
           <View>
-            <Text style={{fontSize: 33, color: 'black'}}>Melina Grace</Text>
+            <Text style={{fontSize: 33, color: 'black'}}>
+              {/* {doctorDetails.name} */}
+              Dr Suman
+            </Text>
           </View>
 
           <View>

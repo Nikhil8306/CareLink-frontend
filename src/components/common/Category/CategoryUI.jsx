@@ -22,12 +22,6 @@ function CategoryUI(props) {
     {name: 'Nikhil', heart: 'asdfsdf'},
     {name: 'Nikhil', heart: 'asdfsdf'},
     {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
-    {name: 'Nikhil', heart: 'asdfsdf'},
   ]);
 
   const [doctorsVisible, setDoctorsVisible] = useState(true);

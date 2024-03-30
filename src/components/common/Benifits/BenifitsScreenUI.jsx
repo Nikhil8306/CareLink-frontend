@@ -1,24 +1,14 @@
 import React, {useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 
-function BenifitsScreenUI({navigation}) {
-  const [schemes, setSchemes] = useState([
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-    {first: 'one'},
-  ]);
+function BenifitsScreenUI(props) {
+  const {navigation, name} = props;
 
-  const handleScheme = () => {
-    navigation.navigate('SchemesHospitals');
+  const [schemesName, setSchemesName] = useState(name);
+
+  const handleScheme = scheme_id => {
+    console.log(scheme_id);
+    navigation.navigate('SchemesHospitals', {scheme: scheme_id});
   };
 
   return (
@@ -30,13 +20,16 @@ function BenifitsScreenUI({navigation}) {
           color: 'black',
           textAlign: 'center',
           marginBottom: 10,
+          padding: 10,
         }}>
         Your schemes
       </Text>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
-        {schemes.map((element, index) => (
+        {schemesName.map((scheme, index) => (
           <TouchableOpacity
-            onPress={handleScheme}
+            onPress={() => {
+              handleScheme(scheme._id);
+            }}
             key={index}
             style={{
               backgroundColor: '#97F3DD',
@@ -54,7 +47,7 @@ function BenifitsScreenUI({navigation}) {
                 fontWeight: 'bold',
                 textAlign: 'center',
               }}>
-              Ayushman bharan yojna
+              {scheme.name}
             </Text>
           </TouchableOpacity>
         ))}
